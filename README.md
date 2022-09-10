@@ -9,14 +9,14 @@ The code can be compiled into an executable program "Step1_maskCTImage" under li
 
 g++ -o Step1_maskCTImage Step1_maskCTImage.cpp -lm -lpthread -lX11 -O3
 
-Launch: ./Step1_maskCTImage.cpp 1004244319.dcm.raw
+Launch: ./Step1_maskCTImage 1004244319.dcm.raw
 
 The executable returns a masked file raw mask_1004244319.dcm.raw
 
 
 In the second step, we apply an algorithm (described in I. Kucybała, Z. Tabor, S. Ciuk, R. Chrzan, A. Urbanik, W. Wojciechowski: A fast graph-based algorithm for automated segmentation of subcutaneous and visceral adipose tissue in 3D abdominal computed tomography images. Biocybernetics and Biomedical Engineering 2020, 40: 729-739) for subcutaneous fat detection to the mask_1004244319.dcm.raw image.
 
-The code for the algorithm can be found in Step2_findFatComponents.cpp. Compilation for linux to an executable "sciezki":
+The code for the algorithm can be found in Step2_findFatComponents.cpp. Compilation for linux to an executable "Step2_findFatComponents":
 g++ -o Step2_findFatComponents Step2_findFatComponents.cpp -lm -lpthread -lX11 -O3
 
 Launch:
