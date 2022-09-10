@@ -16,15 +16,17 @@ The executable returns a masked file raw mask_1004244319.dcm.raw
 
 In the second step, we apply an algorithm (described in I. Kucybała, Z. Tabor, S. Ciuk, R. Chrzan, A. Urbanik, W. Wojciechowski: A fast graph-based algorithm for automated segmentation of subcutaneous and visceral adipose tissue in 3D abdominal computed tomography images. Biocybernetics and Biomedical Engineering 2020, 40: 729-739) for subcutaneous fat detection to the mask_1004244319.dcm.raw image.
 
-The code for the algorithm can be dound in (compilation for linux to an executable "sciezki" in the buildSciezki.sh script). 
+The code for the algorithm can be found in Step2_findFatComponents.cpp. Compilation for linux to an executable "sciezki":
+g++ -o Step2_findFatComponents Step2_findFatComponents.cpp -lm -lpthread -lX11 -O3
+
 Launch:
-./sciezki mask_1004244319.dcm.raw 100. 1. 0.5
+./Step2_findFatComponents mask_1004244319.dcm.raw 100. 1. 0.5
 
-As a result, I get a skinFat_maska_1004244319.dcm.raw.bmp bitmap with subcutaneous fat, visceral fat, background and the rest. The last three arguments of calling the ./sciezki program were unchanged for me, independent of the image in the dataset. 
+As a result, one gets a skinFat_maska_1004244319.dcm.raw.bmp bitmap with subcutaneous fat, visceral fat, background and the remaining regions. The last three arguments of calling the ./Step2_findFatComponents were independent of the image in the dataset described in the article. 
 
-The raw files can be opened in ImageJ - see Settings.png for options which should be set when opening. To open mask_1004244319.dcm.raw you must switch on the option "Little-endian bit order"
-
-
+The raw files can be opened in ImageJ - see Settings.png for options which should be set when opening. To open mask_1004244319.dcm.raw one must switch on the option "Little-endian bit order"
 
 
-g++ -o sciezki sciezki_13.11.2018.cpp -lm -lpthread -lX11 -O3
+
+
+
